@@ -3,12 +3,12 @@ const BASE_URL = "http://127.0.0.1:5000/api";
 // initialize the page
 function createNewHTMLCupcakes(cupcake) {
   return `
-        <div data-cupcake-id= ${cupcake.id}>
+        <div id="each-cupcake" data-cupcake-id= ${cupcake.id}>
         <img class= "Cupcake-img"
         src = "${cupcake.image}"
         alt = "(no image provided)">
-            <li> ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
-            <button class="delete-button">X</button>
+            <li class="cupcake-info"> ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
+            <button class="btn btn-danger delete-btn">X</button>
             </li>
         </div>`;
 }

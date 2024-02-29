@@ -1,4 +1,36 @@
 .Cupcake-img {
   width: 150px;
+  height: 160px;
   border-radius: 5px;
+  object-fit: cover;
+}
+.cupcake-info {
+  font-weight: bold;
+  margin-top: 10px;
+  width: 150px;
+}
+.delete-btn {
+  font-weight: bold;
+  padding: 1px 4px;
+}
+.big-div {
+  border: black solid 4px;
+  border-radius: 5px;
+}
+#cupcakes-list {
+  background-color: rgba(115, 121, 120, 0.767);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+}
+ul {
+  list-style: none;
+}
+#each-cupcake {
+  margin-right: 50px;
+  padding: 10px 0;
+}
+#add-cupcake-form {
+  padding-bottom: 10px;
 }

@@ -4,40 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cupcakes Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="/static/cupcakes.css" />
   </head>
   <body>
-    <h1>Cupcakes - list:</h1>
+    <div class="container center big-div">
+      <h1>Cupcakes - list:</h1>
 
-    <ul id="cupcakes-list"></ul>
+      <ul id="cupcakes-list"></ul>
 
-    <h2>Add a new cupcake!</h2>
-    <form action="" id="add-cupcake-form">
-      <div>
-        <label for="form-flavor">Flavor: </label>
-        <input name="flavor" id="form-flavor" required />
-      </div>
+      <h2>Add a new cupcake!</h2>
+      <form action="" id="add-cupcake-form">
+        <div class="mb-3">
+          <label class="form-label" for="form-flavor">Flavor: </label>
+          <input name="flavor" class="form-control" id="form-flavor" required />
+        </div>
 
-      <div>
-        <label for="form-size">Size: </label>
-        <input name="size" id="form-size" required />
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="form-size">Size: </label>
+          <input name="size" class="form-control" id="form-size" required />
+        </div>
 
-      <div>
-        <label for="form-rating">Rating: </label>
-        <input type="number" name="rating" id="form-rating" required />
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="form-rating">Rating: </label>
+          <input
+            type="number"
+            name="rating"
+            class="form-control"
+            id="form-rating"
+            required
+          />
+        </div>
 
-      <div>
-        <label for="form-image">Image: </label>
-        <input name="image" id="form-image" />
-      </div>
+        <div class="mb-3">
+          <label class="form-label" for="form-image">Image: </label>
+          <input name="image" class="form-control" id="form-image" />
+        </div>
 
-      <button id="add-btn">Add!</button>
-    </form>
+        <button id="add-btn" class="btn btn-outline-success">Add!</button>
+      </form>
+    </div>
 
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script src="/static/cupcakes.js"></script>
   </body>
 </html>
