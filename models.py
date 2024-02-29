@@ -1,7 +1,7 @@
 """Models for REST & JSON APIs"""
 from flask_sqlalchemy import SQLAlchemy
 
-default_img= "https://tinyurl.com/demo-cupcake"
+default_img= "https://www.creativefabrica.com/wp-content/uploads/2020/12/21/Kawaii-Cupcake-Sad-Graphics-7272702-1.jpg"
 
 db = SQLAlchemy()
 def connect_db(app):

@@ -1,30 +1,44 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "http://127.0.0.1:5000/api";
 
-function generateCupcakeHTML(cupcake) {
+// initialize the page
+function createNewHTMLCupcakes(cupcake) {
   return `
-      <div data-cupcake-id=${cupcake.id}>
-        <li>
-          ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
-          <button class="delete-button">X</button>
-        </li>
-        <img class="Cupcake-img"
-              src="${cupcake.image}"
-              alt="(no image provided)">
-      </div>
-    `;
+        <div data-cupcake-id= ${cupcake.id}>
+        <img class= "Cupcake-img"
+        src = "${cupcake.image}"
+        alt = "(no image provided)">
+            <li> ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
+            <button class="delete-button">X</button>
+            </li>
+        </div>`;
 }
 
-async function showInitialCupcakes() {
-  const response = await axios.get(`${BASE_URL}/cupcakes`);
-
-  for (let cupcakeData of response.data.cupcakes) {
-    let newCupcake = $(generateCupcakeHTML(cupcakeData));
+async function getCupcakes() {
+  try {
+    let response = await axios.get(`${BASE_URL}/cupcakes`);
+    console.log(response.data.cupcakes);
+    return response.data.cupcakes;
+  } catch (error) {
+    console.error("Error fetching cupcakes:", error);
+  }
+}
+async function displayCupcakesHTML() {
+  let all_cupcakes = await getCupcakes();
+  for (let i of all_cupcakes) {
+    let newCupcake = $(createNewHTMLCupcakes(i));
     $("#cupcakes-list").append(newCupcake);
   }
 }
 
-showInitialCupcakes();
-let $addBtn = $("#add-btn");
-$addBtn.on("click", () => {
-  alert("hello");
-});
+displayCupcakesHTML();
+
+// after the initialization
+let $deleteBtn = $(".delete-button");
+$("#cupcakes-list").on("click", $deleteBtn, deleteCupcake);
+async function deleteCupcake(evt) {
+  evt.preventDefault();
+  let $cupcake = $(evt.target).closest("div");
+  let cupcakeId = $cupcake.attr("data-cupcake-id");
+  await axios.delete(`${BASE_URL}/cupcakes/${cupcakeId}`);
+  $cupcake.remove();
+}
