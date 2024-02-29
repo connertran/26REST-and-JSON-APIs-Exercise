@@ -42,3 +42,22 @@ async function deleteCupcake(evt) {
   await axios.delete(`${BASE_URL}/cupcakes/${cupcakeId}`);
   $cupcake.remove();
 }
+
+$("#add-cupcake-form").on("click", "#add-btn", async function (evt) {
+  evt.preventDefault();
+
+  let flavor = $("#form-flavor").val();
+  let size = $("#form-size").val();
+  let rating = $("#form-rating").val();
+  let image = $("#form-image").val();
+  postResponse = await axios.post(`${BASE_URL}/cupcakes`, {
+    flavor: flavor,
+    rating: rating,
+    size: size,
+    image: image,
+  });
+  // now append the new cupcake to the list
+  let newCupcake = $(createNewHTMLCupcakes(postResponse.data.cupcake));
+  $("#cupcakes-list").append(newCupcake);
+  $("#add-cupcake-form").trigger("reset");
+});
